@@ -1,0 +1,220 @@
+<style>
+  div{
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+  }
+
+  #tabela {
+    
+    border-collapse: collapse;
+    background-color: black;
+    div{
+      background-color: rgb(179, 179, 179);
+      border-radius: 7px;
+    }
+  
+  }
+</style>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percorredor</title>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+  <body>
+
+    <table style="border-collapse: collapse; background-color: rgb(87, 87, 87); border: 10px double rgb(56, 56, 56); box-shadow: 20px 20px 15px rgb(85, 85, 85);">
+      <tr>
+        <td style="padding-left: 11px;">
+          <input id="contadorPosicao" type="text" style="display: flexbox; width: 150px; height: 50px; border-radius: 10px; background-color: rgb(201, 236, 236);">  
+        </td>
+      </tr>  
+      <tr>
+        <td>
+          <table id="tabela" style="border: 1px solid black; display: flexbox; background-color: black;">
+            <tr>
+              <td>
+                <div id="1">1</div>
+              </td>
+              <td>
+                <div id="2">2</div>
+              </td>
+              <td>
+                <div id="3">3</div>
+              </td>
+              <td>
+                <div id="4">4</div>
+              </td>
+              <td>
+                <div id="5">5</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="6">6</div>
+              </td>
+              <td>
+                <div id="7">7</div>
+              </td>
+              <td>
+                <div id="8">8</div>
+              </td>
+              <td>
+                <div id="9">9</div>
+              </td>
+              <td>
+                <div id="10">10</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="11">11</div>
+              </td>
+              <td>
+                <div id="12">12</div>
+              </td>
+              <td>
+                <div id="13">13</div>
+              </td>
+              <td>
+                <div id="14">14</div>
+              </td>
+              <td>
+                <div id="15">15</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="16">16</div>
+              </td>
+              <td>
+                <div id="17">17</div>
+              </td>
+              <td>
+                <div id="18">18</div>
+              </td>
+              <td>
+                <div id="19">19</div>
+              </td>
+              <td>
+                <div id="20">20</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="21">21</div>
+              </td>
+              <td>
+                <div id="22">22</div>
+              </td>
+              <td>
+                <div id="23">23</div>
+              </td>
+              <td>
+                <div id="24">24</div>
+              </td>
+              <td>
+                <div id="25">25</div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>  
+      <tr>
+        <td style="padding-left: 45px;">
+          <table style="background-color: rgb(189, 189, 189); border-radius: 35px;">
+            <tr>
+              <td></td>
+              <td><button id="cima">^</button></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><button id="esquerda"></button></td>
+              <td></td>
+              <td><button id="direita"></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button id="baixo">v</button></td>
+              <td></td>
+            </tr>
+          </table>  
+        </td>
+      </tr>  
+    </table>
+    
+
+    <script>
+      $(document).ready(function(){
+
+        $("#contadorPosicao").val();
+        $('#direita').text('>');
+        $('#esquerda').text('<');
+
+        for(let i = 0; i <= 0 || i >= 25; i++){
+      
+          let valorAntigo = null;
+
+          $("#direita").on("click",function (){
+            i++;
+            $("#"+i).css("background-color", "yellow"); 
+            valorAntigo = i - 1;
+            $("#"+valorAntigo).css("background-color", "rgb(179, 179, 179)");
+            $("#contadorPosicao").val(i);
+          })
+            
+          $('#esquerda').on('click', function(){
+            i--;
+            $("#"+i).css("background-color", "yellow");
+            valorAntigo = i + 1;
+            $("#"+valorAntigo).css("background-color", "rgb(179, 179, 179)"); 
+            $("#contadorPosicao").val(i);
+          })
+
+          $('#cima').on('click', function(){
+            i = i - 5;
+            $("#"+i).css("background-color", "yellow");
+            valorAntigo = i + 5;
+            $("#"+valorAntigo).css("background-color", "rgb(179, 179, 179)");  
+            $("#contadorPosicao").val(i);
+          })
+        
+         $('#baixo').on('click', function(){
+            i = i + 5;
+            $("#"+i).css("background-color", "yellow");
+            valorAntigo = i - 5;
+            $("#"+valorAntigo).css("background-color", "rgb(179, 179, 179)"); 
+            $("#contadorPosicao").val(i);
+          })
+        }})
+
+        
+
+
+        // $('#esquerda').on('click', function(){
+        //   $("contadorPosicao").val(-1);
+        //   // $( "div:first" ).css( "background", "yellow" );
+
+        // })
+
+        
+        // $('#direita').on('click', function(){
+        //   $("contadorPosicao").val(+1);
+
+        // })
+
+        // $('#cima').on('click', function(){
+        //   $("contadorPosicao").val(-5);
+
+        // })
+
+        // $('#baixo').on('click', function(){
+        //   $("contadorPosicao").val(+5);
+
+        // })
+    </script>
+  </body>
+</html>
